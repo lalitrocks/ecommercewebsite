@@ -92,7 +92,7 @@ function PublicViewproductdetails() {
                 {productdetail &&
                     <div className='row'>
                         <div className='col-md-6 col-sm-12'>
-                            <img src={`http://localhost:8000/${productdetail.image}`} width={'500px'}></img>
+                            <img src={`${process.env.REACT_APP_API_URL}/${productdetail.image}`} width={'500px'}></img>
                         </div>
                         <div className='col-md-6 col-sm-12'>
                             <h1>Product Details</h1>

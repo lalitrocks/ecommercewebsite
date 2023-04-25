@@ -86,7 +86,7 @@ function Products() {
         //     status: checkbox.status === true? 1:0,
         // };
         // console.log(data);
-        fetch('http://localhost:8000/api/admin/addproduct', {
+        fetch(`${process.env.REACT_APP_API_URL}/api/admin/addproduct`, {
             method: "POST",
             body: data,
             headers: {
@@ -111,7 +111,7 @@ function Products() {
     }
     useEffect(() => {
         setloading(true);
-        fetch('http://localhost:8000/api/admin/getactivecategory', {
+        fetch(`${process.env.REACT_APP_API_URL}/api/admin/getactivecategory`, {
             method: "GET",
             headers: {
                 "Accept": "application/json",

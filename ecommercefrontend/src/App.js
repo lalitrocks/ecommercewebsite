@@ -30,7 +30,7 @@ import Reset from './components/frontend/Reset';
 import Verifyemail from './components/frontend/Verifyemail';
 import  { Ismailnotverified,Ismailverified } from './Ismailverified';
 import Updateuser from './components/frontend/Updateuser';
-axios.defaults.baseURL = 'http://localhost:8000/';
+axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 axios.defaults.headers.post['Accept'] = 'application/json';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 

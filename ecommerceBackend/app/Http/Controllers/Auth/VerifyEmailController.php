@@ -16,13 +16,13 @@ class VerifyEmailController extends Controller
     public function __invoke(EmailVerificationRequest $request): RedirectResponse
     {
         if ($request->user()->hasVerifiedEmail()) {
-            return redirect()->away('http://localhost:3000/updateuser');
+            return redirect()->away(env('FRONTEND_URL').'/updateuser');
         }
 
         if ($request->user()->markEmailAsVerified()) {
             event(new Verified($request->user()));
         }
 
-        return redirect()->away('http://localhost:3000/updateuser');
+        return redirect()->away(env('FRONTEND_URL').'/updateuser');
     }
 }

@@ -27,6 +27,9 @@ return new class extends Migration
             $table->string('tracking_no');
             $table->tinyInteger('status')->default(0);
             $table->text('remark');
+            $table->string('payment_intent')->nullable();
+            $table->string('payment_intent_client_secret')->nullable();
+            $table->string('stripe_payment_status')->nullable();
 
 
 

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
 
 function Reset() {
@@ -26,9 +27,9 @@ function Reset() {
             email: formdata.email
 
         }
-        await fetch('http://localhost:8000/sanctum/csrf-cookie', { credentials: 'include' })
+        await fetch(`${process.env.REACT_APP_API_URL}/sanctum/csrf-cookie`, { credentials: 'include' })
 
-        await fetch('http://localhost:8000/checkmailexist', {
+        await fetch(`${process.env.REACT_APP_API_URL}/checkmailexist`, {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
@@ -40,7 +41,7 @@ function Reset() {
         }).then(res => res.json())
             .then(res => {
                 if (res.status === 200) {
-                    fetch('http://localhost:8000/api/forgot-password', {
+                    fetch(`${process.env.REACT_APP_API_URL}/api/forgot-password`, {
                         method: "POST",
                         body: JSON.stringify(data),
                         headers: {
@@ -54,7 +55,7 @@ function Reset() {
                             if (res.status === 200) {
                                 swal("success", "password reset link has been sent to your mail account");
                             }
-            
+
                         })
                 } else if (res.status === 404) {
                     setformdata({ ...formdata, errorList: res.validationerrors })
@@ -64,14 +65,21 @@ function Reset() {
 
             })
     }
-    console.log(formdata);
     return (
-        <div><form onSubmit={(event) => submithandler(event)}>
-            <label>Enter your email</label>
-            <input type='email' name='email' value={formdata.email} onChange={(event) => changehandler(event)} />
-            <span >{formdata.errorList.email}</span>
-            <button>Send password Link</button>
-        </form>
+        <div className='row justify-content-center mt-5'>
+            <div className='col-sm-6 col-6 justify-center'>
+                <div className="card ">
+                    <div className="card-body">
+                        <form onSubmit={(event) => submithandler(event)}>
+                            <label>Enter your email</label><br></br>
+                            <input type='email' name='email' value={formdata.email} onChange={(event) => changehandler(event)} />
+                            <span >{formdata.errorList.email}</span><br/>
+                            <button>Send password Link</button><br/>
+                            Back to :<Link to={'login'}>Login</Link>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

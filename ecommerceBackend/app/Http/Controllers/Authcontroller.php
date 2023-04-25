@@ -19,10 +19,7 @@ use Illuminate\Auth\Events\Registered;
 
 class Authcontroller extends Controller
 {
-    function test()
-    {
-
-    }
+   
     function updateuser(){
         return response()->json([
             'status' => 200,
@@ -95,7 +92,6 @@ class Authcontroller extends Controller
         // $token = $user->createToken($user->userName . '_token')->plainTextToken;
 
     }
-
 
     public function login(Request $request)
     {

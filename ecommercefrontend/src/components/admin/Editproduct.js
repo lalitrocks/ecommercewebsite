@@ -66,7 +66,7 @@ function Editproduct() {
         data.append('featured', checkbox.featured)
         data.append('status', checkbox.status)
 
-        fetch(`http://localhost:8000/api/admin/updateproduct/${id}`, {
+        fetch(`${process.env.REACT_APP_API_URL}/api/admin/updateproduct/${id}`, {
             method: "POST",
             body: data,
             headers: {
@@ -92,7 +92,7 @@ function Editproduct() {
 
     useEffect(() => {
         setloading(true);
-        fetch('http://localhost:8000/api/admin/getactivecategory', {
+        fetch(`${process.env.REACT_APP_API_URL}/api/admin/getactivecategory`, {
             method: "GET",
             headers: {
                 "Accept": "application/json",
@@ -114,7 +114,7 @@ function Editproduct() {
             })
 
 
-        fetch(`http://localhost:8000/api/admin/editproduct/${id}`, {
+        fetch(`${process.env.REACT_APP_API_URL}/api/admin/editproduct/${id}`, {
             method: "GET",
             headers: {
                 "Accept": "application/json",
@@ -206,7 +206,7 @@ function Editproduct() {
                                     </div>
                                     <div className='form-group mb-3'>
                                         <label>Image</label>
-                                        <img src={`http://localhost:8000/${formData.image}`} width={'100px'}></img>
+                                        <img src={`${process.env.REACT_APP_API_URL}/${formData.image}`} width={'100px'}></img>
                                         <input type='file' name='image' onChange={(event) => imageHandler(event)} />
                                         <span>{formData.errorList["image"]}</span>
                                     </div>

@@ -33,7 +33,7 @@ function Editcategory() {
     }
     useEffect(() => {
         setloading(true);
-        fetch(`http://localhost:8000/api/admin/editcategory/${id}`, {
+        fetch(`${process.env.REACT_APP_API_URL}/api/admin/editcategory/${id}`, {
             method: "GET",
             headers: {
                 "Accept": "application/json",
@@ -67,7 +67,7 @@ function Editcategory() {
             slug: formData.slug,
             name: formData.name,
         };
-        await fetch(`http://localhost:8000/api/admin/updatecategory/${id}`, {
+        await fetch(`${process.env.REACT_APP_API_URL}/api/admin/updatecategory/${id}`, {
             method: "PUT",
             body: JSON.stringify(data),
             headers: {

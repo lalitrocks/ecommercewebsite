@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js';
 
@@ -91,7 +91,6 @@ function Checkout() {
     }
 
     const confirmPassword = async (e) => {
-        console.log(44);
         e.preventDefault();
         const data = {
             confirmpasswordbeforepayment: formData.confirmpasswordbeforepayment
@@ -100,7 +99,7 @@ function Checkout() {
             if (res.data.status === 200) {
                 setpassqwordconfirmed(true);
                 removediv()
-                swal('success','now you can place the order');
+                swal('success', 'now you can place the order');
             } else if (res.data.status === 400) {
                 swal('error', res.data.msg, 'error')
             } else if (res.data.status === 404) {
@@ -114,12 +113,12 @@ function Checkout() {
         e.preventDefault();
 
         if (passqwordconfirmed) {
-            // axios.get(`/api/stripe/${grandtotal}`).then(res => {
-            //     if (res.data.status === 200) {
-            //         // setclientSecret(res.data.client_secret)
-            //         client_secret.current = res.data.client_secret;
-            //     }
-            // })
+            axios.get(`/api/stripe/${grandtotal}`).then(res => {
+                if (res.data.status === 200) {
+                    // setclientSecret(res.data.client_secret)
+                    client_secret.current = res.data.client_secret;
+                }
+            })
 
             const data = {
                 first_name: formData.first_name,
@@ -138,7 +137,7 @@ function Checkout() {
 
             switch (mode) {
                 case 'cod':
-                    fetch('http://localhost:8000/api/makepayment', {
+                    fetch(`${process.env.REACT_APP_API_URL}/api/makepayment`, {
                         method: "POST",
                         body: JSON.stringify(data),
                         headers: {
@@ -163,7 +162,7 @@ function Checkout() {
                     break;
                 case 'razorpay':
 
-                    fetch('http://localhost:8000/api/validateform', {
+                    fetch(`${process.env.REACT_APP_API_URL}/api/validateform`, {
                         method: "POST",
                         body: JSON.stringify(data),
                         headers: {
@@ -185,7 +184,7 @@ function Checkout() {
                                     "image": "https://example.com/your_logo",
                                     "handler": function (response) {
                                         data.payment_id = response.razorpay_payment_id;
-                                        fetch('http://localhost:8000/api/makepayment', {
+                                        fetch(`${process.env.REACT_APP_API_URL}/api/makepayment`, {
                                             method: "POST",
                                             body: JSON.stringify(data),
                                             headers: {
@@ -235,7 +234,7 @@ function Checkout() {
 
                     break;
                 case 'stripe':
-                    fetch('http://localhost:8000/api/validateform', {
+                    fetch(`${process.env.REACT_APP_API_URL}/api/validateform`, {
                         method: "POST",
                         body: JSON.stringify(data),
                         headers: {
@@ -259,7 +258,7 @@ function Checkout() {
 
                                     } else {
                                         data.stripe_payment_status = "pending";
-                                        fetch('http://localhost:8000/api/makepayment', {
+                                        fetch(`${process.env.REACT_APP_API_URL}/api/makepayment`, {
                                             method: "POST",
                                             body: JSON.stringify(data),
                                             headers: {
@@ -275,7 +274,7 @@ function Checkout() {
                                                         elements,
                                                         clientSecret: client_secret.current,
                                                         confirmParams: {
-                                                            return_url: `http://localhost:3000/savepaymenttorazor/${res.order_id}`,
+                                                            return_url: `${process.env.REACT_APP_URL}/savepaymenttorazor/${res.order_id}`,
                                                         },
                                                     }).then(function (result) {
 
@@ -351,7 +350,7 @@ function Checkout() {
         )
     } else {
         return (
-            <div>
+            <div className='row'>
 
                 <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div className="modal-dialog">
@@ -378,7 +377,7 @@ function Checkout() {
                 </div>
                 <div className='row'>
                     {/* form */}
-                    <div className='col-7'>
+                    <div className='col-md-7 col-sm-12 col-12'>
                         <div className='card ms-3 p-3 mt-5'>
                             <form >
                                 <div className='row'>
@@ -437,7 +436,10 @@ function Checkout() {
                                 </div>
                                 <div className='row mt-4 '> <h2 className='text-center'>or pay via Stripe</h2></div>
                                 <div className='row'>
-                                    <PaymentElement />
+                                    <div>
+                                        <PaymentElement />
+                                    </div>
+
                                     <div className='col-md-4 me-auto ms-auto'>
                                         <button className='col-md-12 mt-2' onClick={(event) => submithandler(event, 'stripe')} disabled={!stripe || stripeloading}>Pay Via Stripe</button>
                                         {errorMessage && <div>{errorMessage}</div>}
@@ -450,8 +452,8 @@ function Checkout() {
 
 
                     {/* table */}
-                    <div className='col-5'>
-                        <table className='mt-5' style={{ border: "2px solid black", borderCollapse: 'collapse' }}>
+                    <div className='col-md-5 col-sm-12 col-12  '>
+                        <table className='mt-5 ms-sm-auto me-sm-auto' style={{ border: "2px solid black", borderCollapse: 'collapse' }}>
                             <thead>
                                 <tr style={{ border: "2px solid black", padding: '25px' }} >
                                     <th style={{ border: "2px solid black", padding: '25px' }}>ID</th>

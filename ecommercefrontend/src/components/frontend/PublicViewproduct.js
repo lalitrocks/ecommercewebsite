@@ -41,7 +41,7 @@ function PublicViewproduct() {
                 </nav>
                 {product &&product.map((e, index) => {
                     return (<div key={index} className='card col-md-3'>
-                        <img src= {`http://localhost:8000/${e.image}`} alt={e.name} width={'300px'}></img>
+                        <img src= {`${process.env.REACT_APP_API_URL}/${e.image}`} alt={e.name} width={'300px'}></img>
                         <Link to={`/viewproduct/${category.slug}/${e.slug}`}>
                             <h2>{e.name}</h2>
                         </Link>

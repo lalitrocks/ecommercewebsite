@@ -15,7 +15,7 @@ class EmailVerificationNotificationController extends Controller
     public function store(Request $request): RedirectResponse
     {
         if ($request->user()->hasVerifiedEmail()) {
-            return redirect()->away('http://localhost:3000/login');
+            return redirect()->away(env('FRONTEND_URL').'/login');
         }
 
         $request->user()->sendEmailVerificationNotification();

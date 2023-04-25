@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <form method="POST" action="http://localhost:8000/reset-password ">
+    <form method="POST" action={{env('APP_URL')."/reset-password "}}>
         @csrf
 
         <!-- Password Reset Token -->

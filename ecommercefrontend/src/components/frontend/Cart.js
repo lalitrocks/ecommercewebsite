@@ -92,7 +92,7 @@ function Cart() {
 
                                 <td style={{ border: "2px solid black" }}>{e.id}</td>
                                 <td style={{ border: "2px solid black" }}>{e.name}</td>
-                                <td style={{ border: "2px solid black" }}><img src={`http://localhost:8000/${e.image}`} width={'200px'} /></td>
+                                <td style={{ border: "2px solid black" }}><img src={`${process.env.REACT_APP_API_URL}/${e.image}`} width={'200px'} /></td>
                                 <td style={{ border: "2px solid black" }}>
                                     <button type="button" className="btn btn-primary" onClick={() => decrement(e.id)}>-</button>
                                     <input type='number' className='p-1' onChange={() => d()} value={e.quantity} />

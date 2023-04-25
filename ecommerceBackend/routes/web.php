@@ -45,7 +45,7 @@ Route::middleware('auth')->group(function () {
 Route::get('/verify-email/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
  
-    return redirect()->away('http://localhost:3000/login');
+    return redirect()->away(env('FRONTEND_URL').'/login');
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
  
@@ -100,9 +100,9 @@ Route::post('/reset-password', function (Request $request) {
     //     ? redirect()->route('login')->with('status', __($status))
     //     : back()->withErrors(['email' => [__($status)]]);
     if ($status === Password::PASSWORD_RESET) {
-        return redirect()->away('http://localhost:3000/login/success');
+        return redirect()->away(env('FRONTEND_URL').'/login/success');
     }else{
-        return redirect()->away('http://localhost:3000/login/failed');
+        return redirect()->away(env('FRONTEND_URL').'/login/failed');
 
     }
 })->middleware('guest')->name('password.update');

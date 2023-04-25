@@ -145,7 +145,7 @@ class cartcontroller extends Controller
         $data = $request->json()->all();
 
 
-        $order_id = DB::select("SELECT  `AUTO_INCREMENT` FROM  INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'ecommerce' AND   TABLE_NAME   = 'order' ");
+        $order_id = DB::select("SELECT  `AUTO_INCREMENT` FROM  INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'ecommerce' AND TABLE_NAME = 'order' ");
         $mainorder_id = $order_id[0]->AUTO_INCREMENT;
         $order = new order;
         $order->user_id = Auth::user()->id;
@@ -252,13 +252,13 @@ class cartcontroller extends Controller
             //   'enabled' => true,
             // ],
         ]);
-        $stripe->webhookEndpoints->create([
-            'url' => 'https://example.com/my/webhook/endpoint',
-            'enabled_events' => [
-                'charge.failed',
-                'charge.succeeded',
-            ],
-        ]);
+        // $stripe->webhookEndpoints->create([
+        //     'url' => 'https://example.com/my/webhook/endpoint',
+        //     'enabled_events' => [
+        //         'charge.failed',
+        //         'charge.succeeded',
+        //     ],
+        // ]);
 
         return response()->json([
             'status' => 200,

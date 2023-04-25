@@ -20,7 +20,7 @@ function Viewcategory() {
     }
     useEffect(() => {
         setloading(true);
-        fetch('http://localhost:8000/api/admin/viewcategory', {
+        fetch(`${process.env.REACT_APP_API_URL}/api/admin/viewcategory`, {
             method: "GET",
             headers: {
                 "Accept": "application/json",
@@ -44,7 +44,7 @@ function Viewcategory() {
     }, []);
 
     const deletecat = (id) => {
-        fetch(`http://localhost:8000/api/admin/deletecategory/${id}`, {
+        fetch(`${process.env.REACT_APP_API_URL}/api/admin/deletecategory/${id}`, {
             method: "GET",
             headers: {
                 "Accept": "application/json",

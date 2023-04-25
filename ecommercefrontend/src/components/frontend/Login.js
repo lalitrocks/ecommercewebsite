@@ -39,8 +39,8 @@ function Login() {
             userName: formData.userName,
             password: formData.password,
         };
-        await fetch('http://localhost:8000/sanctum/csrf-cookie', { credentials: 'include' })
-        await fetch('http://localhost:8000/login', {
+        await fetch(`${process.env.REACT_APP_API_URL}/sanctum/csrf-cookie`, { credentials: 'include' })
+        await fetch(`${process.env.REACT_APP_API_URL}/login`, {
             method: "POST",
             body: JSON.stringify(data),
             headers: {

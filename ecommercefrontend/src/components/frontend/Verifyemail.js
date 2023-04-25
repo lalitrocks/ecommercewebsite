@@ -14,8 +14,8 @@ function Verifyemail() {
     }
   }
   const handler = async() => {
-    await fetch('http://localhost:8000/sanctum/csrf-cookie', { credentials: 'include' })
-    await fetch('http://localhost:8000/email/verification-notify', {
+    await fetch(`${process.env.REACT_APP_API_URL}/sanctum/csrf-cookie`, { credentials: 'include' })
+    await fetch(`${process.env.REACT_APP_API_URL}/email/verification-notify`, {
       method: "POST",
     
       headers: {

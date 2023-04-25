@@ -18,7 +18,7 @@ function Navbar() {
         }
     }
     const logout = () => {
-        fetch('http://localhost:8000/logout', {
+        fetch(`${process.env.REACT_APP_API_URL}/logout`, {
             method: "POST",
             body: JSON.stringify(),
             headers: {

@@ -39,7 +39,7 @@ function Categories() {
             slug: formData.slug,
             name: formData.name,
         };
-        await fetch('http://localhost:8000/api/admin/addcategory', {
+        await fetch(`${process.env.REACT_APP_API_URL}/api/admin/addcategory`, {
             method: "POST",
             body: JSON.stringify(data),
             headers: {

@@ -27,6 +27,7 @@ return new class extends Migration
             $table->tinyInteger('status')->default(0);
             $table->tinyInteger('featured')->default(0);
             $table->tinyInteger('popular')->default(0);
+            $table->tinyInteger('quantity')->default(0);
 
             $table->timestamps();
         });

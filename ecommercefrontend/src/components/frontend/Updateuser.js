@@ -17,8 +17,8 @@ function Updateuser() {
 const navigate = useNavigate();
       useEffect(() => {
         const func = async()=>{
-        await fetch('http://localhost:8000/sanctum/csrf-cookie', { credentials: 'include' })
-        await fetch('http://localhost:8000/api/updateuser', {
+        await fetch(`${process.env.REACT_APP_API_URL}/sanctum/csrf-cookie`, { credentials: 'include' })
+        await fetch(`${process.env.REACT_APP_API_URL}/api/updateuser`, {
             method: "GET",
             headers: {
                 "Accept": "application/json",

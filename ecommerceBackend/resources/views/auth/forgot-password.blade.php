@@ -6,7 +6,7 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <form method="POST" action="http://localhost:8000/api/forgot-password">
+    <form method="POST" action={{env('APP_URL')."/api/forgot-password"}}>
         @csrf
 
         <!-- Email Address -->
