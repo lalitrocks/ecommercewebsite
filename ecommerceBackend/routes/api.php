@@ -40,6 +40,7 @@ Route::middleware(['auth', 'isadmin','isuserverified'])->group(function () {
     Route::get('admin/deleteproduct/{id}', [Authcontroller::class, 'deleteproduct']);
 
 });
+Route::get('test', [Authcontroller::class, 'test']);
 
 
 

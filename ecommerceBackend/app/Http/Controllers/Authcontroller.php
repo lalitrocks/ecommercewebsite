@@ -19,7 +19,9 @@ use Illuminate\Auth\Events\Registered;
 
 class Authcontroller extends Controller
 {
-   
+   function test(){
+    return 1;
+   }
     function updateuser(){
         return response()->json([
             'status' => 200,
