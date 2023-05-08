@@ -39,6 +39,8 @@ function Navbar() {
 
             })
     }
+    var userdetails = JSON.parse(localStorage.getItem('userdetails'));
+
 
     return (
         <nav className="navbar navbar-expand-lg bg-light">
@@ -53,6 +55,12 @@ function Navbar() {
                         <li className="nav-item">
                             <NavLink className="nav-link" to="/">Home</NavLink>
                         </li>
+                        {
+                            userdetails.role_as === 1 &&  <li className="nav-item">
+                            <NavLink className="nav-link" to="/admin">Admin</NavLink>
+                        </li>
+                        }
+                       
                         <li className="nav-item">
                             <NavLink className="nav-link" to="/orderlist">OrderList</NavLink>
                         </li>
