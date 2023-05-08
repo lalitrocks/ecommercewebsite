@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import {  useParams } from 'react-router-dom'
 import swal from 'sweetalert';
 function PublicViewproductdetails() {
     const { product } = useParams();
@@ -74,7 +74,7 @@ function PublicViewproductdetails() {
         })
 
 
-
+// eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     if (loading) {
@@ -92,7 +92,7 @@ function PublicViewproductdetails() {
                 {productdetail &&
                     <div className='row'>
                         <div className='col-md-6 col-sm-12'>
-                            <img src={`${process.env.REACT_APP_API_URL}/${productdetail.image}`} width={'500px'}></img>
+                            <img src={`${process.env.REACT_APP_API_URL}/${productdetail.image}`} width={'500px'} alt='product'/>
                         </div>
                         <div className='col-md-6 col-sm-12'>
                             <h1>Product Details</h1>

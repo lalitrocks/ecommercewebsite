@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import {  useNavigate, useParams } from 'react-router-dom';
 import swal from 'sweetalert';
 
 function Editcategory() {
@@ -53,7 +53,7 @@ function Editcategory() {
                 }
 
             })
-
+  // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [id])
 
     const submithandler = async (e) => {

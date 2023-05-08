@@ -1,14 +1,7 @@
-import React, { useEffect } from 'react'
-import swal from 'sweetalert';
+import React, {  } from 'react'
 
 function Home() {
-  
-
-  
   var userdetails = JSON.parse(localStorage.getItem('userdetails'));
-
-  
- 
   return (
     <div>User loggwed in:{userdetails.name}
     </div>

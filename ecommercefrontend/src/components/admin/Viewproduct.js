@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
 
 function Viewproduct() {
-    const navigate = useNavigate();
 const [loading, setloading] = useState(true)
 const [allpreoduct, setallpreoduct] = useState({})
 function xsrftoken() {
@@ -87,7 +86,7 @@ const deletecat = (id) => {
                     {allpreoduct && allpreoduct.map((e, index) => <tr style={{ border: "2px solid black" }} key={index}>
                         <td style={{ border: "2px solid black" }}>{e.id}</td>
                         <td style={{ border: "2px solid black" }}>{e.name}</td>
-                        <td style={{ border: "2px solid black" }}><img src={`${process.env.REACT_APP_API_URL}/${e.image}`} width={'50px'}></img></td>
+                        <td style={{ border: "2px solid black" }}><img src={`${process.env.REACT_APP_API_URL}/${e.image}`} width={'50px'} alt='product imgge'></img></td>
 
                         <td style={{ border: "2px solid black" }}>{e.category_id}</td>
                         <td style={{ border: "2px solid black" }}>{e.featured}</td>

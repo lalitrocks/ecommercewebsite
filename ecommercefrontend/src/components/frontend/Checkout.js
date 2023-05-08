@@ -279,13 +279,14 @@ function Checkout() {
                                                     }).then(function (result) {
 
                                                         if (result.error) {
-
+                                                                // eslint-disable-next-line array-callback-return
                                                             restockproducts.map(e => {
                                                                 axios.post(`/api/restockafterstripefailure`, {
                                                                     order_id: res.order_id,
                                                                     product_id: e.product_id,
                                                                     quantity: e.quantity
                                                                 }).then(res => {
+                                                                    
                                                                     if (res.data.status === 404) {
                                                                         console.log('error');
                                                                     }

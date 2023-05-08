@@ -140,6 +140,7 @@ function Editproduct() {
                 }
             })
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 
@@ -206,23 +207,23 @@ function Editproduct() {
                                     </div>
                                     <div className='form-group mb-3'>
                                         <label>Image</label>
-                                        <img src={`${process.env.REACT_APP_API_URL}/${formData.image}`} width={'100px'}></img>
+                                        <img alt='' src={`${process.env.REACT_APP_API_URL}/${formData.image}`} width={'100px'}></img>
                                         <input type='file' name='image' onChange={(event) => imageHandler(event)} />
                                         <span>{formData.errorList["image"]}</span>
                                     </div>
                                     <div className='form-group mb-3'>
                                         <label>featured</label>
-                                        <input type='checkbox' name='featured' checked={checkbox.featured == 1 ? true : false} onChange={(event) => checkboxhandler(event)} />
+                                        <input type='checkbox' name='featured' checked={checkbox.featured === 1 ? true : false} onChange={(event) => checkboxhandler(event)} />
                                         <span>{formData.errorList["featured"]}</span>
                                     </div>
                                     <div className='form-group mb-3'>
                                         <label>popular</label>
-                                        <input type='checkbox' name='popular' checked={checkbox.popular == 1 ? true : false} onChange={(event) => checkboxhandler(event)} />
+                                        <input type='checkbox' name='popular' checked={checkbox.popular === 1 ? true : false} onChange={(event) => checkboxhandler(event)} />
                                         <span>{formData.errorList["popular"]}</span>
                                     </div>
                                     <div className='form-group mb-3'>
                                         <label>status</label>
-                                        <input type='checkbox' name='status' checked={checkbox.status == 1 ? true : false} onChange={(event) => checkboxhandler(event)} />
+                                        <input type='checkbox' name='status' checked={checkbox.status === 1 ? true : false} onChange={(event) => checkboxhandler(event)} />
                                         <span>{formData.errorList["status"]}</span>
                                     </div>
                                     <div className='form-group mb-3'>

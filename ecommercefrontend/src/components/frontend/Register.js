@@ -105,7 +105,7 @@ function Register() {
                                     </div>
                                     <div className='form-group mb-3'>
                                         <button className='btn btn-primary' type='submit'>Register</button>
-                                        <h6>Already have an account <a style={{cursor:'pointer'}} onClick={(event)=>login(event)}>Login</a></h6>
+                                        <h6>Already have an account <button style={{cursor:'pointer'}} onClick={(event)=>login(event)}>Login</button></h6>
                                     </div>
                                 </form>
                             </div>

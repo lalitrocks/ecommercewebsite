@@ -75,7 +75,7 @@ function Reset() {
                             <input type='email' name='email' value={formdata.email} onChange={(event) => changehandler(event)} />
                             <span >{formdata.errorList.email}</span><br/>
                             <button>Send password Link</button><br/>
-                            Back to :<Link to={'login'}>Login</Link>
+                            Back to : <Link to={'login'}>Login</Link>
                         </form>
                     </div>
                 </div>

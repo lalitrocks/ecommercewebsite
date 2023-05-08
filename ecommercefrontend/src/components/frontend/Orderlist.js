@@ -43,7 +43,7 @@ function Orderlist() {
                         return(
                             <tr style={{ border: "2px solid black" }} key={index}>
                                 <td style={{ border: "2px solid black" }}>{e.name}</td>
-                                <td style={{ border: "2px solid black" }}><img width={'150px'} height={'150px'} src={`${process.env.REACT_APP_API_URL}/${e.image}`} /></td>
+                                <td style={{ border: "2px solid black" }}><img width={'150px'} alt='order' height={'150px'} src={`${process.env.REACT_APP_API_URL}/${e.image}`} /></td>
                                 <td style={{ border: "2px solid black" }}>{e.qty}</td>
                                 <td style={{ border: "2px solid black" }}>{e.price}</td>
                             </tr>)

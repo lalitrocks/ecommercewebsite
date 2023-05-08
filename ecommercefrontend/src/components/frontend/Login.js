@@ -97,8 +97,8 @@ function Login() {
                                 </div>
                                 <div className='form-group mb-3'>
                                     <button className='btn btn-primary' type='submit'>Login</button>
-                                    <h6>Dont have an account?<a style={{ cursor: 'pointer' }} onClick={(event) => resgiter(event)}>Register</a></h6>
-                                    <h6>Forgot your password?<a style={{ cursor: 'pointer' }} onClick={(event) => reset(event)}>Reset</a></h6>
+                                    <h6>Dont have an account?<button style={{ cursor: 'pointer' }} onClick={(event) => resgiter(event)}>Register</button></h6>
+                                    <h6>Forgot your password?<button  style={{ cursor: 'pointer' }} onClick={(event) => reset(event)}>Reset</button></h6>
                                 </div>
                             </form>
                         </div>
