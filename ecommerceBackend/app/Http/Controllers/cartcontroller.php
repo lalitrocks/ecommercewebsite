@@ -145,7 +145,7 @@ class cartcontroller extends Controller
         $data = $request->json()->all();
 
 
-        $order_id = DB::select("SELECT  `AUTO_INCREMENT` FROM  INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'ecommerce' AND TABLE_NAME = 'order' ");
+        $order_id = DB::select("SELECT  `AUTO_INCREMENT` FROM  INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '".env('DB_DATABASE')."' AND TABLE_NAME = 'order' ");
         $mainorder_id = $order_id[0]->AUTO_INCREMENT;
         $order = new order;
         $order->user_id = Auth::user()->id;
